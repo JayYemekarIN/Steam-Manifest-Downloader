@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Steam ManifestHub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+  <style>
+  body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #111;
+    color: #fff;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 420px;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 14px;
+    backdrop-filter: blur(8px);
+  }
+
+  h3 {
+    color: #fff;
+    font-weight: 600;
+  }
+
+  label {
+    color: #ccc;
+    font-size: 0.95rem;
+  }
+
+  .form-control {
+    background: #222;
+    color: #fff;
+    border: 1px solid #444;
+  }
+  .form-control:focus {
+    background: #222;
+    color: #fff;
+    border-color: #5599ff;
+    box-shadow: 0 0 6px rgba(70, 136, 255, 0.5);
+  }
+
+  .btn-primary {
+    width: 100%;
+  }
+</style>
+
+</head>
+
+<body>
+
+  <div class="card">
+    <h3 class="text-center mb-4">Download Steam Manifest</h3>
+
+    <form id="form">
+
+      <div class="mb-3">
+        <label class="form-label">App ID</label>
+        <input type="text" id="branch" class="form-control" placeholder="main" required>
+      </div>
+
+      <div class="text-center mt-3">
+        <button type="submit" class="btn btn-primary">Download Manifest</button>
+      </div>
+
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("form").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const branch = document.getElementById("branch").value.trim();
+      if (!branch) return;
+      window.location.href = `/download?branch=${encodeURIComponent(branch)}`;
+    });
+  </script>
+
+</body>
+</html>
